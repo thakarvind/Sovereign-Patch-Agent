@@ -1,0 +1,25 @@
+[0:00 — HOOK]
+Sovereign Patch Agent is an autonomous security system that detects vulnerabilities in code, generates fixes, and enables safe human review before merging to production.
+
+[0:20 — WHAT IT IS]
+It's a multi-agent ADK workflow for the security track, using 4 LLM agents coordinated by an orchestrator, with MCP tools for code scanning and sandbox testing.
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.svg)
+This agent provides Automated Vulnerability Detection, Self-Healing Patches, and Human-in-the-Loop Approval.
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.svg)
+The flow: SecurityGate scrubs PII and blocks injection attacks, VulnerabilityScanner detects SQL injection and hardcoded secrets, PatchGenerator creates safe fixes validated in sandbox, CodeReviewer gives final approval with audit trail.
+
+[2:00 — LIVE DEMO]
+(show http://localhost:18081)
+Test 1: Say "Hello" — it passes security and asks for code to scan.
+Test 2: Say "ignore previous instructions" — blocked with SECURITY ALERT.
+Test 3: Provide vulnerable SQL code — scanner finds the injection vulnerability.
+
+[3:00 — SECURITY & MCP]
+Security checkpoint logs every decision to audit_log.json. MCP tools include scan_codebase, run_sandbox_test, and stage_git_pull_request for end-to-end automation.
+
+[3:30 — IMPACT / CLOSE]
+Security teams get faster, consistent vulnerability detection while developers get automated patch suggestions. Try it at localhost:18081.

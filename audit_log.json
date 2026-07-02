@@ -1,0 +1,122 @@
+[
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-06-30T18:00:46.800729+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-06-30T18:01:25.589842+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T08:42:15.842444+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T08:46:53.186518+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T10:24:16.932525+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T11:52:06.831487+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T12:39:29.660291+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T12:44:32.198028+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T12:45:25.684175+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-01T15:07:58.343936+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T04:49:07.557290+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T04:57:25.535873+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T05:16:55.592912+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T05:53:20.749661+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T07:13:18.777708+00:00"
+  }
+]

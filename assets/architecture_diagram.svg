@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#0f0f23"/>
+  
+  <!-- Title -->
+  <text x="960" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">
+    Sovereign Patch Agent — Agent Workflow
+  </text>
+  
+  <!-- Security Gate Node -->
+  <rect x="50" y="120" width="380" height="140" rx="12" fill="url(#nodeGrad)" stroke="#ff6b6b" stroke-width="2" filter="url(#glow)"/>
+  <text x="240" y="155" font-family="Arial" font-size="20" font-weight="bold" fill="#ff6b6b" text-anchor="middle">SecurityGate</text>
+  <text x="240" y="180" font-family="Arial" font-size="14" fill="#aaa" text-anchor="middle">PII scrub + injection detect + audit</text>
+  
+  <!-- Vulnerability Scanner Node -->
+  <rect x="50" y="300" width="380" height="140" rx="12" fill="url(#nodeGrad)" stroke="#4ecdc4" stroke-width="2" filter="url(#glow)"/>
+  <text x="240" y="335" font-family="Arial" font-size="20" font-weight="bold" fill="#4ecdc4" text-anchor="middle">VulnerabilityScanner</text>
+  <text x="240" y="360" font-family="Arial" font-size="14" fill="#aaa" text-anchor="middle">Scans code for security vulnerabilities via MCP</text>
+  
+  <!-- Patch Generator Node -->
+  <rect x="50" y="480" width="380" height="140" rx="12" fill="url(#nodeGrad)" stroke="#4ecdc4" stroke-width="2" filter="url(#glow)"/>
+  <text x="240" y="515" font-family="Arial" font-size="20" font-weight="bold" fill="#4ecdc4" text-anchor="middle">PatchGenerator</text>
+  <text x="240" y="540" font-family="Arial" font-size="14" fill="#aaa" text-anchor="middle">Generates secure patches + sandbox validation</text>
+  
+  <!-- Code Reviewer Node -->
+  <rect x="50" y="660" width="380" height="140" rx="12" fill="url(#nodeGrad)" stroke="#4ecdc4" stroke-width="2" filter="url(#glow)"/>
+  <text x="240" y="695" font-family="Arial" font-size="20" font-weight="bold" fill="#4ecdc4" text-anchor="middle">CodeReviewer</text>
+  <text x="240" y="720" font-family="Arial" font-size="14" fill="#aaa" text-anchor="middle">Reviews patches, HITL approval</text>
+  
+  <!-- Flow Arrows -->
+  <path d="M 240 260 L 240 300" stroke="#4ecdc4" stroke-width="3" marker-end="url(#arrowhead1)"/>
+  <path d="M 240 440 L 240 480" stroke="#4ecdc4" stroke-width="3" marker-end="url(#arrowhead1)"/>
+  <path d="M 240 620 L 240 660" stroke="#4ecdc4" stroke-width="3" marker-end="url(#arrowhead1)"/>
+  
+  <defs>
+    <marker id="arrowhead1" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4ecdc4"/>
+    </marker>
+  </defs>
+  
+  <!-- MCP Server Panel -->
+  <rect x="1430" y="120" width="440" height="680" rx="12" fill="#1a1a3e" stroke="#a66efa" stroke-width="2"/>
+  <text x="1650" y="160" font-family="Arial" font-size="20" font-weight="bold" fill="#a66efa" text-anchor="middle">MCP Server</text>
+  
+  <!-- MCP Tools -->
+  <text x="1450" y="200" font-family="Arial" font-size="16" fill="white">• scan_codebase</text>
+  <text x="1450" y="230" font-family="Arial" font-size="16" fill="white">• run_sandbox_test</text>
+  <text x="1450" y="260" font-family="Arial" font-size="16" fill="white">• stage_git_pull_request</text>
+  <text x="1450" y="290" font-family="Arial" font-size="16" fill="white">• get_vulnerability_db</text>
+  <text x="1450" y="320" font-family="Arial" font-size="16" fill="white">• get_audit_log</text>
+  
+  <!-- MCP Connections -->
+  <line x1="430" y1="190" x2="1430" y2="190" stroke="#a66efa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="430" y1="370" x2="1430" y2="320" stroke="#a66efa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="430" y1="550" x2="1430" y2="350" stroke="#a66efa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="430" y1="730" x2="1430" y2="380" stroke="#a66efa" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Human Approval Node -->
+  <rect x="580" y="780" width="200" height="120" rx="12" fill="#1a3a5e" stroke="#4a90e2" stroke-width="2"/>
+  <text x="680" y="820" font-family="Arial" font-size="18" font-weight="bold" fill="#4a90e2" text-anchor="middle">Human ✋</text>
+  <text x="680" y="850" font-family="Arial" font-size="14" fill="#aaa" text-anchor="middle">Approval Node</text>
+  
+  <!-- Orchestrator Label -->
+  <text x="960" y="980" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">
+    SovereignPatchOrchestrator (root)
+  </text>
+</svg>
