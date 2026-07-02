@@ -158,7 +158,7 @@ See [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for a narrated walkthrough.
    git add .
    git commit -m "Initial commit: sovereign-patch-agent ADK agent"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/sovereign-patch-agent.git
+   git remote add origin https://github.com/thakarvind/Sovereign-Patch-Agent.git
    git push -u origin main
    ```
 
