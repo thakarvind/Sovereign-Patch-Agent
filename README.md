@@ -3,8 +3,8 @@
 ## Project Overview
 A secure, automated patching agent that scans codebases for vulnerabilities, applies patches, and records audit logs, leveraging ADK 2.2 Workflow.
 
-Simple ReAct agent
-Agent generated with `agents-cli` version `0.5.0`
+> 📄 **Demo Script:** See [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for the 3–4 minute presentation walkthrough.
+
 
 ## Project Structure
 
