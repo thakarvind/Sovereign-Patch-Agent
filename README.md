@@ -123,47 +123,18 @@ Built-in telemetry exports to Cloud Trace, BigQuery, and Cloud Logging.
 
 ```mermaid
 flowchart TD
-    A[SovereignPatchOrchestrator (Workflow)] --> B[SecurityGate]
-    B --> C[VulnerabilityScanner]
-    C --> D[PatchGenerator]
-    D --> E[CodeReviewer]
-    E --> F[Human ✋ (Approval)]
-    F --> G[MCP Tools]
-    style B fill:#ff6666,stroke:#333,stroke-width:2px
-    style F fill:#66b2ff,stroke:#333,stroke-width:2px
+    A["SovereignPatchOrchestrator (ADK 2.2 Workflow)"] --> B["SecurityGate | PII + Injection + Production Guard"]
+    B --> C["VulnerabilityScanner | MCP Scan + CVE DB"]
+    C --> D["PatchGenerator | Sandbox Test + Patch PR"]
+    D --> E["CodeReviewer | Final Review + Audit Trail"]
+    E --> F["Human Approval (HITL) | APPROVE / REJECT"]
+    F --> G["MCP Tools | scan_codebase, run_sandbox, stage_github, get_vuln_db, get_audit_log"]
+    style B fill:#ff6666,color:#fff,stroke:#cc0000,stroke-width:2px
+    style F fill:#66b2ff,color:#fff,stroke:#0066cc,stroke-width:2px
+    style G fill:#2d2d2d,color:#aaffaa,stroke:#55ff55,stroke-width:2px
 ```
 
-The diagram visualizes the sequential workflow from security gating to human approval and MCP tool interaction.
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│               SovereignPatchOrchestrator (Workflow)       │
-│                         (ADK 2.2 Workflow)                │
-└─────────────┬───────────────┬───────────────┬───────────────┬───────────────┐
-              │               │               │               │               │
-              ▼               ▼               ▼               ▼               ▼
-      ┌───────────────┐ ┌───────────────␣┐ ┌───────────────␣┐ ┌───────────────␣┐ ┌───────────────␣┐
-      │ SecurityGate  │ │ Vulnerability │ │ PatchGenerator │ │ CodeReviewer  │ │   Human ✋    │
-      │               │ │   Scanner     │ │               │ │               │ │  (Approval)   │
-      │ PII + Inj.    │ │   MCP Scan    │ │ Sandbox Test  │ │ Final Review  │ │ "APPROVE"     │
-      │ Production    │ │   CVE DB      │ │ Patch + PR    │ │ + Audit Trail │ │               │
-      │ Guard         │ │               │ │               │ │               │ │               │
-```
-      └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘
-              │               │               │               │               │
-              └───────────────┴───────────────┴───────────────┴───────────────┘
-                                    │
-                                    ▼
-                            ┌───────────────┐
-                            │   MCP Tools   │
-                            │               │
-                            │ scan_codebase │
-                            │ run_sandbox   │
-                            │ stage_github  │
-                            │ get_vuln_db   │
-                            │ get_audit_log │
-                            └───────────────┘
-```
+> **Flow:** Input → SecurityGate → VulnerabilityScanner → PatchGenerator → CodeReviewer → Human Approval → MCP Tools
 
 ## Sample Test Cases
 
