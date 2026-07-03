@@ -92,17 +92,18 @@ Built-in telemetry exports to Cloud Trace, BigQuery, and Cloud Logging.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    SovereignPatchOrchestrator            │
-│                         (SequentialAgent)                 │
+│               SovereignPatchOrchestrator (Workflow)       │
+│                         (ADK 2.2 Workflow)                │
 └─────────────┬───────────────┬───────────────┬───────────────┬───────────────┐
               │               │               │               │               │
               ▼               ▼               ▼               ▼               ▼
-      ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐
-      │ SecurityGate  │ │Vulnerability | │ PatchGenerator │ │ CodeReviewer  │ │   Human ✋    │
+      ┌───────────────┐ ┌───────────────␣┐ ┌───────────────␣┐ ┌───────────────␣┐ ┌───────────────␣┐
+      │ SecurityGate  │ │ Vulnerability │ │ PatchGenerator │ │ CodeReviewer  │ │   Human ✋    │
       │               │ │   Scanner     │ │               │ │               │ │  (Approval)   │
       │ PII + Inj.    │ │   MCP Scan    │ │ Sandbox Test  │ │ Final Review  │ │ "APPROVE"     │
       │ Production    │ │   CVE DB      │ │ Patch + PR    │ │ + Audit Trail │ │               │
       │ Guard         │ │               │ │               │ │               │ │               │
+```
       └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘
               │               │               │               │               │
               └───────────────┴───────────────┴───────────────┴───────────────┘

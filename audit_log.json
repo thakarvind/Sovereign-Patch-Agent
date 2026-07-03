@@ -118,5 +118,77 @@
     "injection_detected": false,
     "production_guard": false,
     "timestamp": "2026-07-02T07:13:18.777708+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-02T16:31:35.831955+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:29:46.644037+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:30:48.385399+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:31:58.638583+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:32:03.084021+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:34:18.977523+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:34:23.000912+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:35:10.738976+00:00"
+  },
+  {
+    "event": "SECURITY_CHECKPOINT",
+    "severity": "INFO",
+    "pii_found": [],
+    "injection_detected": false,
+    "production_guard": false,
+    "timestamp": "2026-07-03T14:35:14.590715+00:00"
   }
 ]

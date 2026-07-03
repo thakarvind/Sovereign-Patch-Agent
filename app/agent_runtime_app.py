@@ -20,8 +20,10 @@ from dotenv import load_dotenv
 from google.adk.artifacts import GcsArtifactService, InMemoryArtifactService
 from google.cloud import logging as google_cloud_logging
 from vertexai.agent_engines.templates.adk import AdkApp
+from google.adk.apps.app import App
 
-from app.agent import root_agent as adk_app
+from app.agent import root_agent
+adk_app = App(name="sovereign-patch-agent", root_agent=root_agent)
 from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
 
