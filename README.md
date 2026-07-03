@@ -140,10 +140,6 @@ Built-in telemetry exports to Cloud Trace, BigQuery, and Cloud Logging.
 ![Architecture Diagram](assets/architecture_diagram.svg)
 ![Cover Banner](assets/cover_page_banner.svg)
 
-## Demo Script
-
-See [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for a narrated walkthrough.
-
 ## Push to GitHub
 
 1. Create a new repo at https://github.com/new
