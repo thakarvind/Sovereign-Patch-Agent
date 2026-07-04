@@ -1,38 +1,96 @@
-SOVEREIGN PATCH AGENT — Demo Script
-Recording: Screen + Voiceover | Duration: ~1 minute
+SOVEREIGN PATCH AGENT — Kaggle Capstone Demo Script
+Duration: 2–5 minutes | Screen + Voiceover
 ================================================
 
-[0:00 — INTRODUCTION]
+[0:00 — PROBLEM STATEMENT]
 
-(start screen recording — show playground at http://127.0.0.1:18081)
+(screen: show cover_page_banner.svg)
 
-"This is Sovereign Patch Agent — an autonomous security system
-that finds vulnerabilities in your code, generates fixes,
-and lets a human approve before anything goes to production.
+"Software vulnerabilities cost organisations 4.45 million dollars per
+breach on average. Every day, developers push code containing hidden
+flaws — SQL injections, hardcoded credentials, unpatched CVEs.
 
-Built with Google ADK 2.2, Gemini 2.5 Flash, and MCP."
+Traditional security tools scan your code and produce a report,
+but someone still has to read it, write the fix, test it,
+and get it approved. That process is slow, manual, and error-prone.
 
-
-[0:15 — ARCHITECTURE]
-
-(show assets/architecture_diagram.svg)
-
-"It uses a Workflow graph with four nodes:
-SecurityGate — the first line of defence.
-VulnerabilityScanner — finds security flaws.
-PatchGenerator — creates fixes in a sandbox.
-CodeReviewer — final check and human approval."
+What if an AI agent could do all of that — automatically?"
 
 (pause 2 seconds)
 
 
-[0:30 — LIVE DEMO]
+[0:30 — WHY AGENTS?]
 
-(switch to playground at http://127.0.0.1:18081)
+(screen: show architecture_diagram.svg)
 
-"Let me scan this Python code for vulnerabilities."
+"Why use agents instead of a single AI model?
 
-(paste this code in the playground):
+Because security is a multi-step process. No single prompt can:
+scan the code, cross-reference a vulnerability database,
+generate a patch, validate it in a sandbox, and get human approval.
+
+Agents solve this by breaking the work into specialised roles.
+Each agent has one job, one set of tools, and one clear responsibility.
+They collaborate like a real security team would —
+but they work in seconds, not days.
+
+This is where Google ADK 2.2 comes in.
+It lets you wire multiple LLM agents into a Workflow graph,
+connect them to MCP tools, and add human-in-the-loop checkpoints."
+
+(pause 2 seconds)
+
+
+[1:00 — ARCHITECTURE]
+
+(screen: zoom into architecture_diagram.svg)
+
+"Here's the architecture.
+
+At the top — the SovereignPatchOrchestrator.
+This is an ADK 2.0 Workflow with four nodes.
+
+Node 1: SecurityGate.
+Every request enters here first. It scrubs PII — emails, API keys,
+credit cards, SSNs — and detects prompt injection attempts.
+If anything looks suspicious, the request is blocked immediately
+and a CRITICAL event is logged.
+
+Node 2: VulnerabilityScanner.
+If the input passes, it flows here. This agent calls MCP tools
+to scan code for vulnerabilities — SQL injection, command injection,
+hardcoded secrets, insecure deserialization, and path traversal.
+It cross-references findings against a CVE/CWE database.
+
+Node 3: PatchGenerator.
+Takes the vulnerability report and creates targeted fixes.
+Validates each patch in a sandbox — checks for forbidden imports,
+dangerous function calls, and syntax errors.
+
+Node 4: CodeReviewer.
+Final pass. Verifies the patch actually fixes the vulnerability,
+checks the audit trail, and makes a compliance decision.
+Then it pauses for human approval — you type YES to deploy
+or NO to reject.
+
+On the right side — the MCP Server with five tools:
+scan_codebase, run_sandbox_test, stage_git_pull_request,
+get_vulnerability_db, and get_audit_log.
+These tools are swappable — you can add a Jira integration
+or a Slack notifier without touching the agent logic."
+
+(pause 2 seconds)
+
+
+[1:45 — DEMO]
+
+(screen: switch to playground at http://127.0.0.1:18081)
+
+"Let me show you a real test.
+
+I'll scan this Python code for vulnerabilities:"
+
+(paste code in playground):
 
 import sqlite3
 def get_user(username):
@@ -41,41 +99,81 @@ def get_user(username):
     cursor.execute(f"SELECT * FROM users WHERE name = '{username}'")
     return cursor.fetchone()
 
-"SecurityGate passes it — clean input, no injection or PII."
+"Watch what happens.
 
-(wait for response)
+First — SecurityGate scans the input. No PII found, no injection
+detected. It passes with a green PASS log.
 
-"VulnerabilityScanner finds SQL injection at line 6 —
-f-string in cursor.execute(). Matches CWE-89."
+Next — VulnerabilityScanner calls the scan_codebase MCP tool.
+It finds SQL_INJECTION at line 6 — the f-string in cursor.execute()
+allows user input to be injected directly into the SQL query.
+It cross-references with get_vulnerability_db and matches CWE-89 —
+Improper neutralization of special elements used in SQL commands.
 
-(wait for response)
+Then — PatchGenerator creates a parameterised query fix.
+Instead of the f-string, it uses a placeholder:
+cursor.execute('SELECT * FROM users WHERE name = ?', (username,))
 
-"PatchGenerator creates a parameterised query fix."
+Finally — CodeReviewer verifies the patch fixes the vulnerability,
+runs a sandbox test to confirm no forbidden imports were introduced,
+and outputs APPROVED. The workflow then pauses for human sign-off.
 
-(wait for response)
-
-"CodeReviewer approves and asks for human sign-off."
-
-(pause 2 seconds)
-
-
-[0:55 — SECURITY AND MCP]
-
-"The SecurityGate scrubs six PII types, detects nine injection patterns,
-and logs every decision to a JSON audit trail.
-
-The MCP Server has five tools — scan_codebase, run_sandbox_test,
-stage_git_pull_request, get_vulnerability_db, and get_audit_log."
+You type YES — and the agent stages a pull request on GitHub
+via the stage_git_pull_request MCP tool."
 
 (pause 2 seconds)
 
 
-[1:05 — CLOSE]
+[2:30 — THE BUILD]
 
-"Who benefits? Developers, security teams, and organisations
-that need compliance-ready audit trails.
+(screen: show code files — agent.py, mcp_server.py, config.py)
 
-Sovereign Patch Agent — built with Google ADK 2.2.
+"I built this with Google ADK 2.2, using the Workflow graph API —
+not the older SequentialAgent style.
+
+The project structure:
+app/agent.py — the main Workflow with four nodes and four LLM agents.
+app/mcp_server.py — five MCP tools over stdio transport.
+app/config.py — universal configuration with Gemini 2.5 Flash.
+
+Security controls:
+- PII scrubbing with regex for six data types
+- Prompt injection detection with nine keyword patterns
+- AST code validation blocking dangerous imports
+- Structured JSON audit log with severity levels
+
+Dependencies are pinned for reproducible builds:
+google-adk 2.2, mcp 1.0, fastapi, uvicorn.
+
+Tests: unit tests for security functions,
+integration tests for agent streaming,
+and an eval dataset with custom metrics."
+
+(pause 2 seconds)
+
+
+[3:00 — IMPACT AND CLOSE]
+
+(screen: show cover_page_banner.svg)
+
+"Who benefits from this?
+
+Developers — faster, automated vulnerability detection
+with specific remediation suggestions, not just warnings.
+
+Security teams — consistent, repeatable analysis
+with a full audit trail for compliance.
+
+Organisations — reduced breach risk by catching issues early,
+with automated documentation for SOC2, HIPAA, and PCI-DSS.
+
+Sovereign Patch Agent doesn't replace your security engineer —
+it handles the routine scanning work so they can
+focus on the decisions that actually need human judgement.
+
+Built with Google ADK 2.2, Gemini 2.5 Flash, and MCP.
+Open source on GitHub.
+
 Thank you."
 
 (stop recording)
@@ -84,12 +182,25 @@ Thank you."
 ================================================
 RECORDING CHECKLIST
 ================================================
-[ ] Start recording — playground visible
-[ ] Show architecture diagram (5 seconds)
-[ ] Switch back to playground
-[ ] Paste SQL injection code
-[ ] Wait for agent response
-[ ] Narrate each agent's action
-[ ] Show final approval prompt
+[ ] Start recording
+[ ] [0:00] Show cover banner — narrate problem statement
+[ ] [0:30] Show architecture diagram — explain why agents
+[ ] [1:00] Zoom into architecture — walk through each node
+[ ] [1:45] Switch to playground — paste SQL injection code
+[ ] [2:30] Show code files — explain the build
+[ ] [3:00] Show cover banner — impact and close
 [ ] Stop recording
+[ ] Upload to YouTube (unlisted)
+[ ] Add link to KAGGLE_WRITEUP.md
+================================================
+
+================================================
+TEST CODE (copy this)
+================================================
+import sqlite3
+def get_user(username):
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM users WHERE name = '{username}'")
+    return cursor.fetchone()
 ================================================
