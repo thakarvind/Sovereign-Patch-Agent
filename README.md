@@ -3,8 +3,6 @@
 ## Project Overview
 A secure, automated patching agent that scans codebases for vulnerabilities, applies patches, and records audit logs, leveraging ADK 2.2 Workflow.
 
-> 📄 **Demo Script:** See [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for the 3–4 minute presentation walkthrough.
-
 
 ## Project Structure
 
